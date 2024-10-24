@@ -50,8 +50,8 @@ fun RecipeApp(recipeViewModel: RecipeViewModel = viewModel()) {
                 if (maxWidth < 600.dp) {
                     Column {
                         SearchBar(
-                            onSearch = { query, cuisine, diet, maxCalories ->
-                                recipeViewModel.searchRecipes(query, cuisine, diet, maxCalories)
+                            onSearch = { query, cuisine ->
+                                recipeViewModel.searchRecipes(query, cuisine)
                             }
                         )
                         Spacer(modifier = Modifier.height(8.dp))
@@ -62,8 +62,8 @@ fun RecipeApp(recipeViewModel: RecipeViewModel = viewModel()) {
                     Row {
                         Column(modifier = Modifier.weight(2f)) {
                             SearchBar(
-                                onSearch = { query, cuisine, diet, maxCalories ->
-                                    recipeViewModel.searchRecipes(query, cuisine, diet, maxCalories)
+                                onSearch = { query, cuisine->
+                                    recipeViewModel.searchRecipes(query, cuisine)
                                 }
                             )
                         }
@@ -79,11 +79,10 @@ fun RecipeApp(recipeViewModel: RecipeViewModel = viewModel()) {
 }
 
 @Composable
-fun SearchBar(onSearch: (String, String?, String?, Int?) -> Unit) {
+fun SearchBar(onSearch: (String, String?) -> Unit) {
     var query by remember { mutableStateOf("") }
     var cuisine by remember { mutableStateOf("") }
-    var diet by remember { mutableStateOf("") }
-    var maxCalories by remember { mutableStateOf("") }
+
 
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -107,27 +106,11 @@ fun SearchBar(onSearch: (String, String?, String?, Int?) -> Unit) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        TextField(
-            value = diet,
-            onValueChange = { diet = it },
-            label = { Text("Enter diet type (e.g., vegetarian)") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        TextField(
-            value = maxCalories,
-            onValueChange = { maxCalories = it },
-            label = { Text("Enter max calories") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
         Spacer(modifier = Modifier.height(8.dp))
 
         Button(
             onClick = {
-                onSearch(query, cuisine.ifEmpty { null }, diet.ifEmpty { null }, maxCalories.toIntOrNull())
+                onSearch(query, cuisine.ifEmpty { null })
             },
             modifier = Modifier.fillMaxWidth()
         ) {

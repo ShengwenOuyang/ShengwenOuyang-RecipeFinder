@@ -19,9 +19,7 @@ class RecipeViewModel : ViewModel() {
                 val response = RecipeApi.retrofitService.searchRecipes(
                     apiKey = "3dee876fd7194a33932ffc2ecb470355",
                     query = query,
-                    cuisine = cuisine,
-                    diet = diet,
-                    maxCalories = maxCalories
+                    cuisine = cuisine
                 )
                 _recipes.value = response.recipes
             } catch (e: Exception) {
