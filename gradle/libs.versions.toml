@@ -16,6 +16,8 @@ lifecycleViewmodelCompose = "2.9.0-alpha05"
 moshiKotlin = "1.15.1"
 coilCompose = "2.7.0"
 navigationCompose = "2.9.0-alpha01"
+navigationFragmentKtx = "1.0.0"
+navigationUiKtx = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +42,8 @@ androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "l
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshiKotlin" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+navigation-fragment-ktx = { group = "android.arch.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+navigation-ui-ktx = { group = "android.arch.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

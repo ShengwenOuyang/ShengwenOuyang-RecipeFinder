@@ -10,5 +10,12 @@ data class RecipeResponse(
 data class Recipe(
     val id: Int,
     val title: String,
-    val image: String
+    val image: String,
+    val instructions: String?,
+    val ingredients: List<Ingredient>?
+)
+
+data class Ingredient(
+    val name: String,
+    val amount: String
 )
